@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-room Chat</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+</head>
+<body>
+<noscript>
+    <h2 style="color: #ff0000">Your browser doesn't support Javascript! Please enable Javascript and reload the page.</h2>
+</noscript>
+
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button id="connect" class="btn btn-default" type="button">Connect</button>
+                    <button id="disconnect" class="btn btn-default" type="button" disabled="disabled">Disconnect</button>
+                </div>
+                <div class="form-group">
+                    <label for="roomId">Select Room:</label>
+                    <select id="roomId" class="form-control">
+                        <option value="1">Room 1</option>
+                        <option value="2">Room 2</option>
+                        <option value="3">Room 3</option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="content">Chatting</label>
+                    <input type="text" id="content" class="form-control" placeholder="Enter your message">
+                </div>
+                <button id="send" class="btn btn-default" type="button">Send</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Messages</h3>
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Room</th>
+                    <th>Message</th>
+                </tr>
+                </thead>
+                <tbody id="greetings"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
