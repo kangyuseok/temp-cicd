@@ -15,11 +15,15 @@ import reactor.core.publisher.Mono;
 import java.util.List;
 
 @RestController
-@RequiredArgsConstructor
 public class ChatController {
     private final ChatService chatService;
     private final SimpMessagingTemplate template;
 
+    // 생성자를 직접 작성하여 의존성 주입
+    public ChatController(ChatService chatService, SimpMessagingTemplate template) {
+        this.chatService = chatService;
+        this.template = template;
+    }
 
     //이전 채팅 내용 조회
     @GetMapping("/find/chat/list/{id}")

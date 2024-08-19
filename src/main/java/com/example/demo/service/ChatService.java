@@ -11,10 +11,11 @@ import reactor.core.publisher.Mono;
 import java.util.Date;
 
 @Service
-@RequiredArgsConstructor
-
 public class ChatService {
     private final ChatMessageRepository chatMessageRepository;
+    public ChatService(ChatMessageRepository chatMessageRepository) {
+        this.chatMessageRepository = chatMessageRepository;
+    }
     @Transactional
     public Flux<ChatMessage> findChatMessages(Long id) {
         return chatMessageRepository.findAllByRoomId(id);
